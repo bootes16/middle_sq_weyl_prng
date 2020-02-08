@@ -1,8 +1,5 @@
 //
-// Simple main function illustrating use of the simple PRNG.
-//
-// Author: Greg Johnson
-// Github: bootes16
+// Produce a stream of characters from the simple PRNG.
 //
 #include <iostream>
 
@@ -17,18 +14,8 @@ int main(int argc, char *argv[]) {
     }
 
     auto count = atoi(argv[1]);
+    MiddleSqWeyl<unsigned char> prng;
 
-    // Create some PRNGs of different type widths.
-    MiddleSqWeyl<char> crng;
-    MiddleSqWeyl<unsigned char> ucrng;
-    MiddleSqWeyl<int> irng;
-    MiddleSqWeyl<uint16_t> u16rng;
-
-    for (int i = 0; i < count; i++) {
-        cout << i << ": " << +crng()
-            << " " << +ucrng()
-            << " " << irng()
-            << " " << u16rng()
-            << endl;
-    } 
+    while (count-- > 0)
+        cout << prng();
 }
